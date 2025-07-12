@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Bell, Search, Settings, Plus, Heart, ShoppingBag, TrendingUp, Users, Eye } from 'lucide-react';
+import { Bell, Search, Settings, Plus, Heart, ShoppingBag, TrendingUp, Users, Eye, Home } from 'lucide-react';
 import { useAuth } from './useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const ReWearDashboard = () => {
   const { userId } = useAuth();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('listings');
   const [user, setUser] = useState(null);
   const [listings, setListings] = useState([]);
@@ -48,6 +50,13 @@ const ReWearDashboard = () => {
               <h1 className="text-2xl font-bold text-gray-800">ReWear</h1>
             </div>
             <div className="flex items-center space-x-4">
+              <button
+                onClick={() => navigate('/landing')}
+                className="flex items-center px-3 py-2 bg-gray-100 hover:bg-purple-100 text-purple-600 rounded-lg font-medium transition-colors"
+                title="Go to Home"
+              >
+                <Home className="w-5 h-5 mr-1" /> Home
+              </button>
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <input 
