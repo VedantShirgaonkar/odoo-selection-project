@@ -30,7 +30,10 @@ export const createItem = async (req, res) => {
 
 export const getItems = async (req, res) => {
   try {
+    const { uploaderId } = req.query;
+    const where = uploaderId ? { uploaderId } : undefined;
     const items = await prisma.item.findMany({
+      where,
       include: { uploader: true, swapRequests: true },
       orderBy: { createdAt: 'desc' },
     });

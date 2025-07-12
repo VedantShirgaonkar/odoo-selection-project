@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from './useAuth';
+import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, Phone, ArrowRight, Check, X, Repeat } from 'lucide-react';
 
 const ReWearAuth = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
   const [currentView, setCurrentView] = useState('login'); // 'login' or 'signup'
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -155,9 +159,12 @@ const ReWearAuth = () => {
           })
         });
         const data = await res.json();
+        console.log('LOGIN RESPONSE:', data);
         if (res.ok) {
+          const userId = data.user?._id || data.user?.id;
+          login(userId);
           alert('Login successful!');
-          window.location.href = '/landing'; // Redirect to landing page
+          navigate('/landing');
         } else {
           alert(data.error || data.message || 'Login failed');
         }
@@ -178,7 +185,10 @@ const ReWearAuth = () => {
           })
         });
         const data = await res.json();
+        console.log('SIGNUP RESPONSE:', data);
         if (res.ok) {
+          const userId = data.user?._id || data.user?.id;
+          login(userId);
           alert('Signup successful!');
           setCurrentView('login');
         } else {

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from './useAuth';
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Shirt, Users, Repeat, Star, Menu, X } from 'lucide-react';
 
 const ReWearLanding = () => {
+  const { userId, logout } = useAuth();
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState({});
@@ -84,20 +88,26 @@ const ReWearLanding = () => {
               </div>
               <span className="text-xl font-bold text-slate-800">ReWear</span>
             </div>
-            
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               <a href="#" className="text-slate-600 hover:text-violet-600 transition-colors">How It Works</a>
               <a href="#" className="text-slate-600 hover:text-violet-600 transition-colors">Browse</a>
               <a href="#" className="text-slate-600 hover:text-violet-600 transition-colors">Community</a>
-              <button className="px-4 py-2 text-violet-600 hover:bg-violet-50 rounded-lg transition-colors">
-                Login
-              </button>
-              <button className="px-4 py-2 bg-gradient-to-r from-violet-500 to-coral-500 text-white rounded-lg hover:from-violet-600 hover:to-coral-600 transition-all transform hover:scale-105">
-                Sign Up
-              </button>
+              {userId ? (
+                <>
+                  <a href="/dashboard" className="px-4 py-2 text-violet-600 hover:bg-violet-50 rounded-lg transition-colors">Dashboard</a>
+                  <button
+                    onClick={() => { logout(); navigate('/auth'); }}
+                    className="px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                  >Logout</button>
+                </>
+              ) : (
+                <>
+                  <a href="/auth" className="px-4 py-2 text-violet-600 hover:bg-violet-50 rounded-lg transition-colors">Login</a>
+                  <a href="/auth" className="px-4 py-2 bg-gradient-to-r from-violet-500 to-coral-500 text-white rounded-lg hover:from-violet-600 hover:to-coral-600 transition-all transform hover:scale-105">Sign Up</a>
+                </>
+              )}
             </div>
-
             {/* Mobile menu button */}
             <div className="md:hidden">
               <button
@@ -109,7 +119,6 @@ const ReWearLanding = () => {
             </div>
           </div>
         </div>
-
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-slate-200">
@@ -117,12 +126,20 @@ const ReWearLanding = () => {
               <a href="#" className="block px-3 py-2 text-slate-600 hover:text-violet-600 transition-colors">How It Works</a>
               <a href="#" className="block px-3 py-2 text-slate-600 hover:text-violet-600 transition-colors">Browse</a>
               <a href="#" className="block px-3 py-2 text-slate-600 hover:text-violet-600 transition-colors">Community</a>
-              <button className="block w-full text-left px-3 py-2 text-violet-600 hover:bg-violet-50 transition-colors">
-                Login
-              </button>
-              <button className="block w-full text-left px-3 py-2 bg-gradient-to-r from-violet-500 to-coral-500 text-white rounded-lg hover:from-violet-600 hover:to-coral-600 transition-all">
-                Sign Up
-              </button>
+              {userId ? (
+                <>
+                  <a href="/dashboard" className="block w-full text-left px-3 py-2 text-violet-600 hover:bg-violet-50 transition-colors">Dashboard</a>
+                  <button
+                    onClick={() => { logout(); navigate('/auth'); setIsMenuOpen(false); }}
+                    className="block w-full text-left px-3 py-2 text-red-600 hover:bg-red-50 transition-colors"
+                  >Logout</button>
+                </>
+              ) : (
+                <>
+                  <a href="/auth" className="block w-full text-left px-3 py-2 text-violet-600 hover:bg-violet-50 transition-colors">Login</a>
+                  <a href="/auth" className="block w-full text-left px-3 py-2 bg-gradient-to-r from-violet-500 to-coral-500 text-white rounded-lg hover:from-violet-600 hover:to-coral-600 transition-all">Sign Up</a>
+                </>
+              )}
             </div>
           </div>
         )}
@@ -151,15 +168,9 @@ const ReWearLanding = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="px-8 py-4 bg-gradient-to-r from-violet-500 to-coral-500 text-white text-lg font-semibold rounded-xl hover:from-violet-600 hover:to-coral-600 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
-                Start Swapping
-              </button>
-              <button className="px-8 py-4 bg-white text-slate-700 text-lg font-semibold rounded-xl border-2 border-slate-200 hover:border-violet-300 hover:bg-violet-50 transition-all transform hover:scale-105">
-                Browse Items
-              </button>
-              <button className="px-8 py-4 bg-slate-800 text-white text-lg font-semibold rounded-xl hover:bg-slate-700 transition-all transform hover:scale-105">
-                List an Item
-              </button>
+              <a href="/auth" className="px-8 py-4 bg-gradient-to-r from-violet-500 to-coral-500 text-white text-lg font-semibold rounded-xl hover:from-violet-600 hover:to-coral-600 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">Start Swapping</a>
+              <a href="/landing" className="px-8 py-4 bg-white text-slate-700 text-lg font-semibold rounded-xl border-2 border-slate-200 hover:border-violet-300 hover:bg-violet-50 transition-all transform hover:scale-105">Browse Items</a>
+              <a href="/add-item" className="px-8 py-4 bg-slate-800 text-white text-lg font-semibold rounded-xl hover:bg-slate-700 transition-all transform hover:scale-105">List an Item</a>
             </div>
           </div>
         </div>
@@ -301,12 +312,8 @@ const ReWearLanding = () => {
             Join thousands of style-conscious individuals who are already swapping, saving, and styling sustainably.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-white text-violet-600 text-lg font-semibold rounded-xl hover:bg-slate-50 transition-all transform hover:scale-105 shadow-lg">
-              Get Started Now
-            </button>
-            <button className="px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-semibold rounded-xl hover:bg-white hover:text-violet-600 transition-all transform hover:scale-105">
-              Learn More
-            </button>
+            <a href="/auth" className="px-8 py-4 bg-white text-violet-600 text-lg font-semibold rounded-xl hover:bg-slate-50 transition-all transform hover:scale-105 shadow-lg">Get Started Now</a>
+            <a href="/landing" className="px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-semibold rounded-xl hover:bg-white hover:text-violet-600 transition-all transform hover:scale-105">Learn More</a>
           </div>
         </div>
       </section>
