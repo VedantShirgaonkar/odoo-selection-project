@@ -30,6 +30,6 @@ The goal is to build a **community-oriented solution** to help users reuse weara
 
 ## 🎥 Video Demo
 
-> 📺 Watch our demo here: [Insert Video Demo Link Here](https://drive.google.com/file/d/1P30DZ_zqPJpdSL9x-rVhptP2jilvrcLM/view?usp=sharing)
+> 📺 Watch our demo here: [Link Redirect](https://drive.google.com/file/d/1P30DZ_zqPJpdSL9x-rVhptP2jilvrcLM/view?usp=sharing)
 
 This short walkthrough gives an overview of how ReWear works and highlights key features in action.
