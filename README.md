@@ -15,3 +15,21 @@ Welcome to **ReWear**, a community-powered platform designed to promote sustaina
 
 
 ---
+## 📌 Project Overview
+
+**ReWear** is a web-based platform that enables users to:
+
+- 👕 List unused clothes for exchange  
+- 🔁 Swap items directly with other users  
+- 🎯 Redeem clothing using a **point-based system**  
+
+The goal is to build a **community-oriented solution** to help users reuse wearable garments instead of discarding them, creating a more **eco-friendly** approach to fashion.
+
+---
+
+
+## 🎥 Video Demo
+
+> 📺 Watch our demo here: [Insert Video Demo Link Here](https://drive.google.com/file/d/1P30DZ_zqPJpdSL9x-rVhptP2jilvrcLM/view?usp=sharing)
+
+This short walkthrough gives an overview of how ReWear works and highlights key features in action.
