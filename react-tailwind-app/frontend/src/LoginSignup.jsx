@@ -191,7 +191,7 @@ const ReWearAuth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-violet-50 flex items-center justify-center p-4">
+    <div className="min-h-screen w-full bg-gradient-to-br from-slate-50 via-white to-violet-50 flex flex-col items-center justify-center p-0 m-0 relative">
       {/* Floating Background Elements */}
       <FloatingElement className="top-20 left-10" delay={0} />
       <FloatingElement className="top-32 right-16" delay={1} />
@@ -200,7 +200,7 @@ const ReWearAuth = () => {
       <FloatingElement className="top-1/2 left-1/4" delay={1.5} />
       <FloatingElement className="top-1/3 right-1/3" delay={2.5} />
 
-      <div className="w-full max-w-md">
+      <div className="w-full h-full flex flex-col items-center justify-center p-0 m-0" style={{minHeight: '100vh'}}>
         {/* Header */}
         <div className={`text-center mb-8 transform transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <div className="flex items-center justify-center space-x-2 mb-4">
