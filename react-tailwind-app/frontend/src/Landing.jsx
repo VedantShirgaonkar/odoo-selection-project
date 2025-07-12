@@ -251,7 +251,7 @@ const ReWearLanding = () => {
                   className="flex transition-transform duration-500 ease-in-out"
                   style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                 >
-                  {featuredItems.map((item, index) => (
+                  {featuredItems.map((item) => (
                     <div key={item.id} className="w-1/3 flex-shrink-0 px-4">
                       <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden">
                         <div className="aspect-square bg-gradient-to-br from-slate-100 to-slate-200 relative overflow-hidden">

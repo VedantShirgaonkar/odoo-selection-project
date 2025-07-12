@@ -1,17 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import ReWearLanding from './Landing'
-import './App.css'
+
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import ReWearLanding from './Landing';
+import ReWearAuth from './LoginSignup';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <ReWearLanding />
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/auth" replace />} />
+        <Route path="/auth" element={<ReWearAuth />} />
+        <Route path="/landing" element={<ReWearLanding />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
